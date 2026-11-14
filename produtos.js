@@ -6,8 +6,8 @@
 const CONFIG = {
   nomeLoja: "Flor de Porcelana",
   // WhatsApp da loja: código do país + DDD + número, só dígitos. Ex.: 5587999998888
-  whatsapp: "5500000000000",
-  instagram: "",            // ex.: "https://instagram.com/flordeporcelana" (deixe "" para ocultar)
+  whatsapp: 5500000000000,
+  instagram: https://www.instagram.com/florporcelana/,            // ex.: "https://instagram.com/flordeporcelana" (deixe "" para ocultar)
   horarioAtendimento: "Seg a Sex, 9h às 18h · Sáb, 9h às 13h",
   avisoAluguel: "Valores de aluguel são por unidade, por evento (diária).",
 };
