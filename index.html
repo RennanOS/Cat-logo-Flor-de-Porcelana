@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flor de Porcelana · Aluguel e venda de utensílios, festa e decoração</title>
+<meta name="description" content="Catálogo da Flor de Porcelana: aluguel e venda de utensílios de casa, festa e decoração. Monte seu pedido e envie pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul:#26457a; --azul-esc:#1a315a; --azul-claro:#e9eff9;
+    --creme:#faf7f2; --branco:#fff; --ouro:#a98550;
+    --texto:#26303f; --suave:#6a7385; --borda:#e3dfd6;
+    --verde:#1f9d55; --erro:#c0392b;
+    --raio:14px; --sombra:0 6px 24px rgba(38,69,122,.10);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--texto);background:var(--creme);line-height:1.5}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;margin:0;color:var(--azul-esc)}
+  button{font:inherit;cursor:pointer}
+  img{max-width:100%;display:block}
+  .container{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* Cabeçalho */
+  header.topo{position:sticky;top:0;z-index:30;background:rgba(250,247,242,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+  .topo .linha{display:flex;align-items:center;gap:16px;padding:12px 0}
+  .logo{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:700;color:var(--azul-esc);text-decoration:none;white-space:nowrap}
+  .logo span{color:var(--ouro)}
+  .busca{flex:1;position:relative;max-width:420px;margin-left:auto}
+  .busca input{width:100%;padding:10px 14px 10px 38px;border:1px solid var(--borda);border-radius:999px;background:var(--branco);font:inherit}
+  .busca input:focus{outline:2px solid var(--azul);outline-offset:1px}
+  .busca::before{content:"🔍";position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:.85rem;opacity:.6}
+  .btn-carrinho{position:relative;display:flex;align-items:center;gap:8px;border:1px solid var(--azul);background:var(--azul);color:#fff;padding:9px 16px;border-radius:999px;font-weight:600}
+  .btn-carrinho:hover{background:var(--azul-esc)}
+  .contador{background:var(--ouro);color:#fff;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.78rem;padding:0 6px}
+
+  /* Hero */
+  .hero{background:
+      radial-gradient(circle at 12% 20%, #dbe6f7 0, transparent 38%),
+      radial-gradient(circle at 90% 80%, #efe4d1 0, transparent 40%),
+      var(--azul-claro);
+    border-bottom:1px solid var(--borda)}
+  .hero .container{padding:48px 20px;text-align:center}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05}
+  .hero p{max-width:620px;margin:14px auto 0;color:var(--suave);font-size:1.05rem}
+  .hero .selos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+  .selo{background:var(--branco);border:1px solid var(--borda);border-radius:999px;padding:7px 14px;font-size:.88rem;color:var(--azul-esc)}
+
+  /* Filtros */
+  .filtros{padding:24px 0 8px}
+  .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+  .chip{flex:0 0 auto;border:1px solid var(--borda);background:var(--branco);color:var(--texto);padding:8px 15px;border-radius:999px;font-size:.92rem}
+  .chip:hover{border-color:var(--azul)}
+  .chip.ativo{background:var(--azul);border-color:var(--azul);color:#fff}
+  .modos{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+  .modos .rotulo{font-size:.88rem;color:var(--suave)}
+  .seg{display:inline-flex;border:1px solid var(--borda);border-radius:999px;overflow:hidden;background:var(--branco)}
+  .seg button{border:0;background:transparent;padding:7px 16px;font-size:.9rem;color:var(--texto)}
+  .seg button.ativo{background:var(--azul-claro);color:var(--azul-esc);font-weight:600}
+  .aviso{font-size:.84rem;color:var(--suave);margin:12px 0 0}
+
+  /* Grade */
+  .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;padding:18px 0 56px}
+  .card{background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+  .card:hover{box-shadow:var(--sombra);transform:translateY(-2px)}
+  .thumb{aspect-ratio:4/3;display:grid;place-items:center;font-size:3.6rem;background:linear-gradient(135deg,#e9eff9,#f6efe3);position:relative}
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .badge{font-size:.72rem;font-weight:600;padding:3px 9px;border-radius:999px;letter-spacing:.02em;background:var(--azul);color:#fff}
+  .badge.venda{background:var(--ouro)}
+  .card .corpo{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card .cat{font-size:.76rem;color:var(--suave);text-transform:uppercase;letter-spacing:.06em}
+  .card h3{font-size:1.28rem;line-height:1.15}
+  .card .desc{font-size:.88rem;color:var(--suave);margin:0}
+  .precos{margin-top:auto;padding-top:8px;font-size:.92rem;display:grid;gap:2px}
+  .precos b{color:var(--azul-esc)}
+  .acoes{display:flex;gap:8px;align-items:stretch;margin-top:10px;flex-wrap:wrap}
+  .qtd{display:inline-flex;align-items:center;border:1px solid var(--borda);border-radius:10px;overflow:hidden}
+  .qtd button{border:0;background:var(--creme);width:30px;height:100%;min-height:36px;font-size:1.1rem}
+  .qtd input{width:40px;border:0;text-align:center;font:inherit;background:#fff;-moz-appearance:textfield}
+  .qtd input::-webkit-outer-spin-button,.qtd input::-webkit-inner-spin-button{-webkit-appearance:none}
+  .btn{border:1px solid var(--azul);background:var(--azul);color:#fff;padding:8px 12px;border-radius:10px;font-size:.86rem;font-weight:600;flex:1;min-width:90px}
+  .btn:hover{background:var(--azul-esc)}
+  .btn.venda{background:#fff;color:var(--azul-esc);border-color:var(--ouro)}
+  .btn.venda:hover{background:#f8f0e4}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .indisp{font-size:.85rem;color:var(--erro);margin-top:10px}
+  .vazio{grid-column:1/-1;text-align:center;color:var(--suave);padding:40px 0}
+
+  /* Carrinho */
+  .fundo{position:fixed;inset:0;background:rgba(20,28,44,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+  .fundo.aberto{opacity:1;pointer-events:auto}
+  .gaveta{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--creme);z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+  .gaveta.aberta{transform:none}
+  .gaveta header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--borda);background:#fff}
+  .gaveta header h2{font-size:1.6rem}
+  .fechar{border:0;background:transparent;font-size:1.6rem;line-height:1;color:var(--suave)}
+  .gaveta .lista{flex:1;overflow:auto;padding:16px 20px}
+  .grupo h4{margin:14px 0 8px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ouro)}
+  .item{display:grid;grid-template-columns:1fr auto;gap:4px 10px;background:#fff;border:1px solid var(--borda);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+  .item .nome{font-weight:600;font-size:.94rem}
+  .item .sub{font-size:.82rem;color:var(--suave)}
+  .item .remover{border:0;background:none;color:var(--erro);font-size:.8rem;padding:0}
+  .item .linha2{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center}
+  .vazio-carrinho{text-align:center;color:var(--suave);padding:40px 10px}
+  .rodape-carrinho{border-top:1px solid var(--borda);background:#fff;padding:16px 20px;display:grid;gap:10px}
+  .rodape-carrinho label{font-size:.84rem;font-weight:600;display:grid;gap:4px}
+  .rodape-carrinho input,.rodape-carrinho textarea{border:1px solid var(--borda);border-radius:10px;padding:9px 11px;font:inherit;width:100%}
+  .rodape-carrinho textarea{resize:vertical;min-height:54px}
+  .rodape-carrinho input.erro{border-color:var(--erro);outline:2px solid rgba(192,57,43,.2)}
+  .msg-erro{color:var(--erro);font-size:.84rem;margin:0;min-height:1em}
+  .total{display:flex;justify-content:space-between;font-size:.95rem}
+  .total b{font-size:1.1rem;color:var(--azul-esc)}
+  .nota{font-size:.78rem;color:var(--suave);margin:0}
+  .btn-zap{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#0b3d1d;border:0;border-radius:12px;padding:13px;font-weight:700;font-size:1rem}
+  .btn-zap:hover{background:#1fb858}
+  .btn-zap[disabled]{opacity:.5;cursor:not-allowed}
+  .limpar{border:0;background:none;color:var(--suave);font-size:.82rem;text-decoration:underline}
+
+  /* Rodapé */
+  footer.rodape{background:var(--azul-esc);color:#d9e2f3;padding:32px 0;font-size:.92rem}
+  footer .container{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:#fff}
+  footer strong{font-family:"Cormorant Garamond",serif;font-size:1.4rem;color:#fff}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--azul-esc);color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:.25s;z-index:60}
+  .toast.mostra{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:640px){
+    .topo .linha{flex-wrap:wrap}
+    .busca{order:3;max-width:none;flex-basis:100%}
+    .btn-carrinho{margin-left:auto}
+    .grade{grid-template-columns:repeat(2,1fr);gap:12px}
+    .card h3{font-size:1.1rem}
+    .thumb{font-size:2.6rem}
+    .acoes{flex-direction:column}
+    .qtd{align-self:flex-start}
+  }
+  @media (max-width:380px){.grade{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="container linha">
+    <a class="logo" href="#" aria-label="Flor de Porcelana"><span>✿</span> Flor de Porcelana</a>
+    <div class="busca"><input id="busca" type="search" placeholder="Buscar produtos…" aria-label="Buscar produtos"></div>
+    <button class="btn-carrinho" id="abrirCarrinho" aria-label="Abrir carrinho">🛍️ Meu pedido <span class="contador" id="contador">0</span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Tudo para sua casa, sua festa<br>e sua decoração</h1>
+    <p>Alugue ou compre louças, taças, mesa posta, móveis e decoração. Escolha os itens, monte seu pedido e envie direto para o nosso WhatsApp.</p>
+    <div class="selos">
+      <span class="selo">🏷️ Aluguel</span>
+      <span class="selo">🛒 Venda</span>
+      <span class="selo">💬 Pedido pelo WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <section class="filtros" aria-label="Filtros">
+    <div class="chips" id="chips"></div>
+    <div class="modos">
+      <span class="rotulo">Mostrar:</span>
+      <div class="seg" id="seg">
+        <button data-modo="todos" class="ativo">Todos</button>
+        <button data-modo="aluguel">Aluguel</button>
+        <button data-modo="venda">Venda</button>
+      </div>
+    </div>
+    <p class="aviso" id="avisoAluguel"></p>
+  </section>
+
+  <section class="grade" id="grade" aria-live="polite"></section>
+</main>
+
+<footer class="rodape">
+  <div class="container">
+    <div>
+      <strong>✿ Flor de Porcelana</strong><br>
+      Aluguel e venda de utensílios de casa, festa e decoração.
+    </div>
+    <div id="contatoRodape"></div>
+  </div>
+</footer>
+
+<div class="fundo" id="fundo"></div>
+<aside class="gaveta" id="gaveta" aria-label="Carrinho" aria-hidden="true">
+  <header>
+    <h2>Meu pedido</h2>
+    <button class="fechar" id="fecharCarrinho" aria-label="Fechar">×</button>
+  </header>
+  <div class="lista" id="listaCarrinho"></div>
+  <div class="rodape-carrinho" id="rodapeCarrinho">
+    <div id="campoData" hidden>
+      <label>Data de retirada (aluguel) *
+        <input type="date" id="dataRetirada">
+      </label>
+    </div>
+    <label>Seu nome (opcional)
+      <input type="text" id="nomeCliente" placeholder="Como podemos te chamar?">
+    </label>
+    <label>Observações (opcional)
+      <textarea id="obs" placeholder="Ex.: horário de retirada, tipo de evento…"></textarea>
+    </label>
+    <div class="total"><span>Valor estimado</span><b id="totalEstimado">R$ 0,00</b></div>
+    <p class="nota">Os valores são uma estimativa. A confirmação final, disponibilidade e entrega são combinadas pelo WhatsApp.</p>
+    <p class="msg-erro" id="msgErro"></p>
+    <button class="btn-zap" id="enviarZap" disabled>Enviar pedido pelo WhatsApp</button>
+    <button class="limpar" id="limpar">Limpar pedido</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="produtos.js"></script>
+<script>
+(function(){
+  "use strict";
+  const $ = s => document.querySelector(s);
+  const brl = v => Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+  const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const norm = s => String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  const CHAVE = "flordeporcelana_pedido_v1";
+
+  const porId = Object.fromEntries(PRODUTOS.map(p=>[p.id,p]));
+  const catPorId = Object.fromEntries(CATEGORIAS.map(c=>[c.id,c]));
+  const temAluguel = p => p.precoAluguel != null;
+  const temVenda = p => p.precoVenda != null;
+
+  let filtro = { categoria:"todas", modo:"todos", busca:"" };
+  let carrinho = [];   // { id, modo:"aluguel"|"venda", qtd }
+  let formulario = { data:"", nome:"", obs:"" };
+
+  /* ---------- Persistência ---------- */
+  function carregar(){
+    try{
+      const salvo = JSON.parse(localStorage.getItem(CHAVE) || "{}");
+      if (Array.isArray(salvo.carrinho)){
+        carrinho = salvo.carrinho.filter(i =>
+          porId[i.id] && (i.modo==="aluguel" ? temAluguel(porId[i.id]) : i.modo==="venda" ? temVenda(porId[i.id]) : false) && i.qtd>0
+        );
+      }
+      if (salvo.formulario) formulario = Object.assign(formulario, salvo.formulario);
+    }catch(e){}
+  }
+  function salvar(){
+    try{ localStorage.setItem(CHAVE, JSON.stringify({carrinho, formulario})); }catch(e){}
+  }
+
+  /* ---------- Filtros ---------- */
+  function renderChips(){
+    const todas = [{id:"todas",nome:"Todas as categorias"}].concat(CATEGORIAS);
+    $("#chips").innerHTML = todas.map(c =>
+      `<button class="chip ${filtro.categoria===c.id?"ativo":""}" data-cat="${esc(c.id)}">${c.icone?c.icone+" ":""}${esc(c.nome)}</button>`
+    ).join("");
+  }
+
+  function produtosFiltrados(){
+    const q = norm(filtro.busca);
+    return PRODUTOS.filter(p=>{
+      if (filtro.categoria!=="todas" && p.categoria!==filtro.categoria) return false;
+      if (filtro.modo==="aluguel" && !temAluguel(p)) return false;
+      if (filtro.modo==="venda" && !temVenda(p)) return false;
+      if (q && !norm(p.nome+" "+(p.descricao||"")+" "+((catPorId[p.categoria]||{}).nome||"")).includes(q)) return false;
+      return true;
+    }).sort((a,b)=> (b.destaque?1:0)-(a.destaque?1:0));
+  }
+
+  /* ---------- Catálogo ---------- */
+  function renderGrade(){
+    const lista = produtosFiltrados();
+    if (!lista.length){
+      $("#grade").innerHTML = `<div class="vazio">Nenhum produto encontrado. Tente outra categoria ou outra busca.</div>`;
+      return;
+    }
+    $("#grade").innerHTML = lista.map(p=>{
+      const cat = catPorId[p.categoria] || {nome:"",icone:"✿"};
+      const indisp = p.disponivel===false;
+      const foto = p.imagem ? `<img src="${esc(p.imagem)}" alt="${esc(p.nome)}" loading="lazy">` : cat.icone;
+      const badges = (temAluguel(p)?`<span class="badge">Aluguel</span>`:"") + (temVenda(p)?`<span class="badge venda">Venda</span>`:"");
+      const precos = (temAluguel(p)?`<span>Aluguel: <b>${brl(p.precoAluguel)}</b> <small>/un. · evento</small></span>`:"")
+                   + (temVenda(p)?`<span>Venda: <b>${brl(p.precoVenda)}</b> <small>/un.</small></span>`:"");
+      const botoes = indisp ? `<div class="indisp">Indisponível no momento</div>` : `
+        <div class="acoes">
+          <div class="qtd"><button type="button" data-acao="menos" aria-label="Diminuir">−</button><input type="number" min="1" value="1" inputmode="numeric" aria-label="Quantidade"><button type="button" data-acao="mais" aria-label="Aumentar">+</button></div>
+          ${temAluguel(p)?`<button class="btn" data-acao="add" data-modo="aluguel">Alugar</button>`:""}
+          ${temVenda(p)?`<button class="btn venda" data-acao="add" data-modo="venda">Comprar</button>`:""}
+        </div>`;
+      return `<article class="card" data-id="${esc(p.id)}">
+        <div class="thumb">${foto}<div class="badges">${badges}</div></div>
+        <div class="corpo">
+          <span class="cat">${esc(cat.nome)}</span>
+          <h3>${esc(p.nome)}</h3>
+          ${p.descricao?`<p class="desc">${esc(p.descricao)}</p>`:""}
+          <div class="precos">${precos}</div>
+          ${botoes}
+        </div>
+      </article>`;
+    }).join("");
+  }
+
+  /* ---------- Carrinho ---------- */
+  function adicionar(id, modo, qtd){
+    const p = porId[id]; if(!p) return;
+    qtd = Math.max(1, parseInt(qtd,10) || 1);
+    let item = carrinho.find(i=>i.id===id && i.modo===modo);
+    const atual = item ? item.qtd : 0;
+    let nova = atual + qtd;
+    let aviso = "";
+    if (modo==="aluguel" && p.estoque && nova > p.estoque){
+      nova = p.estoque;
+      aviso = ` (máximo para aluguel: ${p.estoque})`;
+    }
+    if (item) item.qtd = nova; else carrinho.push({id, modo, qtd:nova});
+    salvar(); renderCarrinho();
+    toast(`${p.nome} adicionado${aviso}`);
+  }
+  function alterarQtd(id, modo, delta){
+    const item = carrinho.find(i=>i.id===id && i.modo===modo); if(!item) return;
+    const p = porId[id];
+    item.qtd += delta;
+    if (modo==="aluguel" && p.estoque && item.qtd > p.estoque){ item.qtd = p.estoque; toast(`Máximo para aluguel: ${p.estoque}`); }
+    if (item.qtd <= 0) carrinho = carrinho.filter(i=>i!==item);
+    salvar(); renderCarrinho();
+  }
+  function remover(id, modo){
+    carrinho = carrinho.filter(i=>!(i.id===id && i.modo===modo));
+    salvar(); renderCarrinho();
+  }
+  const preco = i => i.modo==="aluguel" ? porId[i.id].precoAluguel : porId[i.id].precoVenda;
+  const total = () => carrinho.reduce((s,i)=> s + preco(i)*i.qtd, 0);
+  const totalItens = () => carrinho.reduce((s,i)=> s + i.qtd, 0);
+  const temItemAluguel = () => carrinho.some(i=>i.modo==="aluguel");
+
+  function linhaItem(i){
+    const p = porId[i.id];
+    return `<div class="item" data-id="${esc(i.id)}" data-modo="${i.modo}">
+      <div><div class="nome">${esc(p.nome)}</div><div class="sub">${brl(preco(i))} /un.</div></div>
+      <button class="remover" data-acao="remover">Remover</button>
+      <div class="linha2">
+        <div class="qtd"><button type="button" data-acao="c-menos" aria-label="Diminuir">−</button><input type="number" min="1" value="${i.qtd}" data-acao="c-input" aria-label="Quantidade"><button type="button" data-acao="c-mais" aria-label="Aumentar">+</button></div>
+        <b>${brl(preco(i)*i.qtd)}</b>
+      </div>
+    </div>`;
+  }
+
+  function renderCarrinho(){
+    const alug = carrinho.filter(i=>i.modo==="aluguel");
+    const comp = carrinho.filter(i=>i.modo==="venda");
+    $("#contador").textContent = totalItens();
+    $("#listaCarrinho").innerHTML = carrinho.length
+      ? (alug.length?`<div class="grupo"><h4>Para alugar</h4>${alug.map(linhaItem).join("")}</div>`:"")
+      + (comp.length?`<div class="grupo"><h4>Para comprar</h4>${comp.map(linhaItem).join("")}</div>`:"")
+      : `<div class="vazio-carrinho">Seu pedido está vazio.<br>Adicione produtos para montar sua lista. ✿</div>`;
+    $("#campoData").hidden = !temItemAluguel();
+    $("#totalEstimado").textContent = brl(total());
+    $("#enviarZap").disabled = carrinho.length===0;
+    $("#limpar").hidden = carrinho.length===0;
+  }
+
+  /* ---------- WhatsApp ---------- */
+  function saudacao(){
+    const h = new Date().getHours();
+    return h<12 ? "bom dia" : h<18 ? "boa tarde" : "boa noite";
+  }
+  function dataBR(iso){ const [a,m,d] = iso.split("-"); return `${d}/${m}/${a}`; }
+  function hojeISO(){
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  }
+
+  function montarMensagem(){
+    const alug = carrinho.filter(i=>i.modo==="aluguel");
+    const comp = carrinho.filter(i=>i.modo==="venda");
+    const nome = formulario.nome.trim();
+    const linhas = [];
+    linhas.push(`Oi, ${saudacao()}! ${nome?`Meu nome é ${nome}. `:""}Gostaria desses seguintes produtos:`);
+    if (alug.length){
+      linhas.push("", `*Para alugar* (retirada no dia ${dataBR(formulario.data)}):`);
+      alug.forEach(i=> linhas.push(`• ${i.qtd}x ${porId[i.id].nome}`));
+    }
+    if (comp.length){
+      linhas.push("", `*Para comprar:*`);
+      comp.forEach(i=> linhas.push(`• ${i.qtd}x ${porId[i.id].nome}`));
+    }
+    linhas.push("", `Valor estimado: ${brl(total())}`);
+    if (formulario.obs.trim()) linhas.push("", `Obs.: ${formulario.obs.trim()}`);
+    return linhas.join("\n");
+  }
+
+  function enviar(){
+    const erro = $("#msgErro");
+    erro.textContent = "";
+    $("#dataRetirada").classList.remove("erro");
+    if (!carrinho.length) return;
+    if (temItemAluguel()){
+      if (!formulario.data){
+        erro.textContent = "Escolha a data de retirada dos itens de aluguel.";
+        $("#dataRetirada").classList.add("erro"); $("#dataRetirada").focus(); return;
+      }
+      if (formulario.data < hojeISO()){
+        erro.textContent = "A data de retirada não pode ser no passado.";
+        $("#dataRetirada").classList.add("erro"); $("#dataRetirada").focus(); return;
+      }
+    }
+    const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(montarMensagem())}`;
+    window.open(url, "_blank", "noopener");
+  }
+
+  /* ---------- UI ---------- */
+  let toastTimer;
+  function toast(msg){
+    const t = $("#toast"); t.textContent = msg; t.classList.add("mostra");
+    clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove("mostra"), 2200);
+  }
+  function abrir(){ $("#gaveta").classList.add("aberta"); $("#fundo").classList.add("aberto"); $("#gaveta").setAttribute("aria-hidden","false"); }
+  function fechar(){ $("#gaveta").classList.remove("aberta"); $("#fundo").classList.remove("aberto"); $("#gaveta").setAttribute("aria-hidden","true"); }
+
+  /* ---------- Eventos ---------- */
+  $("#chips").addEventListener("click", e=>{
+    const b = e.target.closest("[data-cat]"); if(!b) return;
+    filtro.categoria = b.dataset.cat; renderChips(); renderGrade();
+  });
+  $("#seg").addEventListener("click", e=>{
+    const b = e.target.closest("[data-modo]"); if(!b) return;
+    filtro.modo = b.dataset.modo;
+    document.querySelectorAll("#seg button").forEach(x=>x.classList.toggle("ativo", x===b));
+    renderGrade();
+  });
+  $("#busca").addEventListener("input", e=>{ filtro.busca = e.target.value; renderGrade(); });
+
+  $("#grade").addEventListener("click", e=>{
+    const btn = e.target.closest("[data-acao]"); if(!btn) return;
+    const card = btn.closest(".card"); const input = card.querySelector(".qtd input");
+    const acao = btn.dataset.acao;
+    if (acao==="mais") input.value = (parseInt(input.value,10)||1) + 1;
+    if (acao==="menos") input.value = Math.max(1, (parseInt(input.value,10)||1) - 1);
+    if (acao==="add"){ adicionar(card.dataset.id, btn.dataset.modo, input.value); input.value = 1; }
+  });
+
+  $("#listaCarrinho").addEventListener("click", e=>{
+    const btn = e.target.closest("[data-acao]"); if(!btn) return;
+    const it = btn.closest(".item"); const id = it.dataset.id, modo = it.dataset.modo;
+    if (btn.dataset.acao==="c-mais") alterarQtd(id,modo,1);
+    if (btn.dataset.acao==="c-menos") alterarQtd(id,modo,-1);
+    if (btn.dataset.acao==="remover") remover(id,modo);
+  });
+  $("#listaCarrinho").addEventListener("change", e=>{
+    if (e.target.dataset.acao!=="c-input") return;
+    const it = e.target.closest(".item"); const item = carrinho.find(i=>i.id===it.dataset.id && i.modo===it.dataset.modo);
+    if (!item) return;
+    alterarQtd(item.id, item.modo, (parseInt(e.target.value,10)||1) - item.qtd);
+  });
+
+  $("#abrirCarrinho").addEventListener("click", abrir);
+  $("#fecharCarrinho").addEventListener("click", fechar);
+  $("#fundo").addEventListener("click", fechar);
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") fechar(); });
+  $("#limpar").addEventListener("click", ()=>{ if(confirm("Limpar todo o pedido?")){ carrinho=[]; salvar(); renderCarrinho(); } });
+  $("#enviarZap").addEventListener("click", enviar);
+
+  $("#dataRetirada").addEventListener("change", e=>{ formulario.data = e.target.value; e.target.classList.remove("erro"); $("#msgErro").textContent=""; salvar(); });
+  $("#nomeCliente").addEventListener("input", e=>{ formulario.nome = e.target.value; salvar(); });
+  $("#obs").addEventListener("input", e=>{ formulario.obs = e.target.value; salvar(); });
+
+  /* ---------- Início ---------- */
+  function iniciar(){
+    document.title = `${CONFIG.nomeLoja} · Aluguel e venda de utensílios, festa e decoração`;
+    carregar();
+    if (formulario.data && formulario.data < hojeISO()) formulario.data = "";
+    $("#dataRetirada").min = hojeISO();
+    $("#dataRetirada").value = formulario.data;
+    $("#nomeCliente").value = formulario.nome;
+    $("#obs").value = formulario.obs;
+    $("#avisoAluguel").textContent = CONFIG.avisoAluguel || "";
+    const zap = `https://wa.me/${CONFIG.whatsapp}`;
+    $("#contatoRodape").innerHTML =
+      `<div>💬 <a href="${esc(zap)}" target="_blank" rel="noopener">Fale conosco no WhatsApp</a></div>` +
+      (CONFIG.instagram?`<div>📷 <a href="${esc(CONFIG.instagram)}" target="_blank" rel="noopener">Instagram</a></div>`:"") +
+      (CONFIG.horarioAtendimento?`<div>🕘 ${esc(CONFIG.horarioAtendimento)}</div>`:"");
+    renderChips(); renderGrade(); renderCarrinho();
+  }
+  iniciar();
+})();
+</script>
+</body>
+</html>
