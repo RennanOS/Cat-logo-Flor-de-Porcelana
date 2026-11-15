@@ -41,7 +41,7 @@ const CATEGORIAS = [
 */
 const PRODUTOS = [
   { id: "prato-raso-porcelana", nome: "Prato raso de porcelana branca", categoria: "loucas",
-    descricao: "Prato raso 27 cm, borda clássica.", precoAluguel: 2.5, precoVenda: 18.9, estoque: 120, destaque: true },
+    descricao: "Prato raso 27 cm, borda clássica.", imagem: "img/istockphoto-489909851-612x612.jpg", precoAluguel: 2.5, precoVenda: 18.9, estoque: 120, destaque: true },
   { id: "prato-sobremesa-azul", nome: "Prato de sobremesa azul e branco", categoria: "loucas",
     descricao: "Estampa floral inspirada em porcelana oriental, 19 cm.", precoAluguel: 2.0, precoVenda: null, estoque: 80, destaque: true },
   { id: "travessa-oval", nome: "Travessa oval de cerâmica", categoria: "loucas",
